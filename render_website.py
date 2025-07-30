@@ -3,6 +3,8 @@ import json
 from livereload import Server
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
+from more_itertools import chunked
+
 
 def show_all_books(data_file):
     with open(data_file, "r", encoding='utf-8') as f:
@@ -20,7 +22,8 @@ def show_all_books(data_file):
             'genres': book['genres'],
         })
 
-    return book_on_page
+    return list(chunked(book_on_page, 2))
+    # return book_on_page
 
 
 def on_reload():
@@ -49,3 +52,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # print(show_all_books('meta_data.json'))
