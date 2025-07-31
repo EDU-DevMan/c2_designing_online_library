@@ -23,7 +23,6 @@ def show_all_books(data_file):
         })
 
     return list(chunked(book_on_page, 2))
-    # return book_on_page
 
 
 def on_reload():
@@ -52,4 +51,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    # print(show_all_books('meta_data.json'))
